@@ -1,0 +1,28 @@
+﻿@page "{Id:int}"
+@model CoreWebApplication1.Pages.EditModel
+@{
+}
+
+<h2 class="h2">Editing for @Model.restaurant.Name</h2>
+<form  method="post">
+    <input type="hidden" asp-for="restaurant.RestaurantId" />
+    <div class="form-group">
+        <label asp-for="restaurant.Name">Restaurant </label>
+        <input asp-for="restaurant.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurant.Location">Place </label>
+        <input asp-for="restaurant.Location" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="restaurant.Cuisine">Restaurant </label>
+        <select class="form-control" asp-for="restaurant.Cuisine" asp-items="Model.Cuisines"></select>
+    </div>
+    <div class="form-group">
+       
+        <button type="submit" class="btn btn-primary" >Save</button>
+    </div>
+
+
+
+</form>

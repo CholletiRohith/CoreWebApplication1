@@ -5,7 +5,33 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Restaurants</h1>
     @Model.msg
     <p>Learn about @ViewData["Title"] my <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<form method="get">
+    <div class="form-group">
+        <input class="input-group" asp-for="SearchTerm" type="text" />
+        <span class="input-group-btn">
+            <button class="btn btn-group">
+                Search
+            </button>
+        </span>
+    </div>
+</form>
+
+<table class="table table-bordered">
+   
+    <tbody>
+        @foreach (var res in Model.restaurants)
+        {
+            <tr id="@res.RestaurantId">
+                <td><a asp-page="./Detail" asp-route-Id="@res.RestaurantId">@res.Name</a></td>
+                <td>@res.Location</td>
+                <td>@res.Cuisine</td>
+                <td><a asp-page="./Edit" asp-route-Id="@res.RestaurantId">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿@page "{Id:int}"
+@model CoreWebApplication1.Pages.DetailModel
+@{
+}
+
+<h1>@Model.re.Name</h1>
+
+<div>
+    ID: @Model.re.RestaurantId
+</div>
+
+<div>
+    Name: @Model.re.Name
+</div>
+
+<div>
+    Location: @Model.re.Location
+</div>
+<div>
+    Cuisine: @Model.re.Cuisine
+</div>
+<a asp-page="./Index" class="btn btn-primary">Go back</a>
