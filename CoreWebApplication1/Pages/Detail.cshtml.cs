@@ -12,7 +12,9 @@ namespace CoreWebApplication1.Pages
     public class DetailModel : PageModel
     {
         public Restaurant re { set; get; }
- 
+        [TempData]
+        public string Message{ get; set; }
+
         private readonly IRestaurantaData restaurantaData;
 
         public DetailModel(IRestaurantaData restaurantData)

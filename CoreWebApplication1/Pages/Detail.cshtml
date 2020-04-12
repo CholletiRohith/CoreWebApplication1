@@ -19,4 +19,9 @@
 <div>
     Cuisine: @Model.re.Cuisine
 </div>
+
+@if(Model.Message != null)
+{
+    <div class="alert-info">@Model.Message</div>
+}
 <a asp-page="./Index" class="btn btn-primary">Go back</a>

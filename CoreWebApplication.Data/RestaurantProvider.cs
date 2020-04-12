@@ -41,6 +41,13 @@ namespace CoreWebApplication.Data
             return 0;
         }
 
+        public Restaurant AddRestaurant(Restaurant restaurant)
+        {
+            restaurant.RestaurantId = restaurants.Max(r => r.RestaurantId) + 1;
+            restaurants.Add(restaurant);
+            return restaurant;
+        }
+
         public RestaurantProvider()
         {
             restaurants = new List<Restaurant>()

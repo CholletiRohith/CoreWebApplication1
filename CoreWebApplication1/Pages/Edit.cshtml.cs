@@ -23,19 +23,36 @@ namespace CoreWebApplication1.Pages
             this.restaurantData = restaurantData;
             this.htmlHelper = htmlHelper;
         }
-        public ActionResult OnGet(int Id)
+        public ActionResult OnGet(int? Id)
         {
+            TempData["Message"] = "Restaurant Saved";
             Cuisines = htmlHelper.GetEnumSelectList<CusineType>();
-            restaurant = restaurantData.GetRestaurantById(Id);
+            if (Id.HasValue)
+                restaurant = restaurantData.GetRestaurantById(Id.Value);
+            else
+            {
+                Restaurant res = new Restaurant();
+                return Page();
+            }
             if (restaurant == null)
                 return RedirectToPage("./NotFound");
             return Page();
         }
 
-        public IActionResult OnPost()
+        public ActionResult OnPost()
         {
-            restaurant = restaurantData.UpdateRestaurant(restaurant);
-            return Page();
+            if (!ModelState.IsValid)//Checked the entire model data is valid or not
+            {
+                //int rf = restaurant.RestaurantId;
+                Cuisines = htmlHelper.GetEnumSelectList<CusineType>();
+                return Page();
+
+            }
+            if (restaurant.RestaurantId > 0)
+                restaurant = restaurantData.UpdateRestaurant(restaurant);
+            else
+                restaurant = restaurantData.AddRestaurant(restaurant);
+            return RedirectToPage("./Detail", new { Id = restaurant.RestaurantId });
         }
     }
 }
