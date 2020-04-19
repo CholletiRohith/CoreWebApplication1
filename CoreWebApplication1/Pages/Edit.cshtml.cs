@@ -52,6 +52,7 @@ namespace CoreWebApplication1.Pages
                 restaurant = restaurantData.UpdateRestaurant(restaurant);
             else
                 restaurant = restaurantData.AddRestaurant(restaurant);
+            restaurantData.Commit();
             return RedirectToPage("./Detail", new { Id = restaurant.RestaurantId });
         }
     }

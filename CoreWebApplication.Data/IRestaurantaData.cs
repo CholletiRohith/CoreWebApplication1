@@ -13,6 +13,8 @@ namespace CoreWebApplication.Data
         Restaurant UpdateRestaurant(Restaurant restaurant);
         int Commit();
         Restaurant AddRestaurant(Restaurant restaurant);
+
+        Restaurant Delete(int Id);
     }
 
 }

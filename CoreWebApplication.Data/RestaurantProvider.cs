@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CoreWebApplication.Data
 {
-    public class RestaurantProvider : IRestaurantaData
+    public class RestaurantProvider
     {
         public List<Restaurant> restaurants;
         public IEnumerable<Restaurant> GetAllRestaurantsByName(string Name = null)
@@ -46,6 +46,11 @@ namespace CoreWebApplication.Data
             restaurant.RestaurantId = restaurants.Max(r => r.RestaurantId) + 1;
             restaurants.Add(restaurant);
             return restaurant;
+        }
+
+        public Restaurant Delete(int Id)
+        {
+            throw new NotImplementedException();
         }
 
         public RestaurantProvider()
